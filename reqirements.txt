@@ -1,0 +1,5 @@
+flask
+flask_sqlalchemy
+Flask-Markdown
+flask_login
+requests

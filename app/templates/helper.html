@@ -1,0 +1,41 @@
+{% macro render_page_data(page_data,page_function) %}
+    <div class="pure-button-group">
+        <a class="pure-button" href="{{ url_for(page_function,page = 1) }}">First</a>
+        {% for page in page_data.iter_pages() %}
+            {% if page %}
+                {% if page !=page_data.page %}
+                    <a class="pure-button" href="{{ url_for(page_function, page=page) }}">
+                        {{ page }}
+                    </a>
+                {% else %}
+                    <a class="pure-button pure-button-active">{{ page }}</a>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        <a class="pure-button" href="{{ url_for(page_function,page = page_data.pages) }}">Final</a>
+    </div>
+{% endmacro %}
+
+{#has_next：如果在目前页后至少还有一页的话，返回 True#}
+{#has_prev：如果在目前页之前至少还有一页的话，返回 True#}
+{#next_num：下一页的页面数#}
+{#prev_num：前一页的页面数#}
+
+{#                <div class="pure-u-1-6">#}
+{#                    {% if pagenum==1 %}#}
+{#                        <button class="pure-button" disabled>First Page</button>#}
+{#                    {% else %}#}
+{#                        <p>#}
+{#
+{#                        </p>#}
+{#                    {% endif %}#}
+{#                </div>#}
+{#                <div class="pure-u-1-6"></div>#}
+{#                <div class="pure-u-1-6"></div>#}
+{#                <div class="pure-u-1-6"></div>#}
+{#                <div class="pure-u-1-6"></div>#}
+{#                <div class="pure-u-1-6">#}
+{#                    <p>#}
+{#                        <button class="pure-button">Next-></button>#}
+{#                    </p>#}
+{#                </div>#}

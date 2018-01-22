@@ -1,0 +1,44 @@
+{% extends "blog/base.html" %}
+
+{% block content_title %}Post List{% endblock %}
+
+{% block content %}
+
+    <div class="table-responsive">
+        <table class="table table-hover table-condensed table-bordered table-striped">
+            <thead>
+            <tr>
+                <td class="info">title</td>
+                <td class="success">tag</td>
+                <td class="info">time</td>
+                <td class="success">manipulate</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for post in publishedtposts %}
+                <tr>
+                    <td>{{ post.title }}</td>
+                    <td>
+                        {% for tag in post.tags %}
+                            {{ tag.content }},
+                        {% endfor %}
+                    </td>
+                    <td>{{ post.time.strftime('%Y-%m-%d %H:%M') }}</td>
+                    <td>
+                        <a href="{{ url_for('admin.editpost', postid = post.post_id) }}" style="text-decoration: none;">
+                            <button type="button" class="btn btn-primary btn-xs">Edit</button>
+                        </a>
+
+                        <a style="text-decoration: none;"
+                           href="{{ url_for('admin.deletepost', postid = post.post_id) }}">
+                            <button type="button" class="btn btn-danger btn-xs">Delete</button>
+                        </a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

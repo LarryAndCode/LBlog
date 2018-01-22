@@ -1,0 +1,42 @@
+{% extends "blog/base.html" %}
+
+{% block content_title %}Tag List{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-hover table-condensed table-bordered table-striped">
+                <thead>
+                <tr>
+                    <td class="info">ID</td>
+                    <td class="success">tag</td>
+                    <td class="info">time</td>
+                    <td class="success">manipulate</td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for tag in tags %}
+                    <tr>
+                        <td>{{ tag.tag_id }}</td>
+                        <td>{{ tag.content }}</td>
+                        <td>{{ tag.time.strftime('%Y-%m-%d %H:%M') }}</td>
+                        <td>
+                            <a href="{{ url_for('admin.updatetag', tagid = tag.tag_id) }}"
+                               style="text-decoration: none;">
+                                <button type="button" class="btn btn-primary btn-xs">Edit</button>
+                            </a>
+                            <a style="text-decoration: none;"
+                               href="{{ url_for('admin.deletetag', tagid = tag.tag_id) }}">
+                                <button type="button" class="btn btn-danger btn-xs">Delete</button>
+                            </a>
+
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}

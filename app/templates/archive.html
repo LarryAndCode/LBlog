@@ -1,0 +1,38 @@
+<!-- extend base layout -->
+{% import 'helper.html' as helper %}
+{% extends "base.html" %}
+{% block content %}
+    <div class="blog">
+        {% for post in posts.items %}
+            <div class="conteudo">
+                <h1><a class="Alabel" href="/post/{{ post.title }}">{{ post.title }} </a></h1>
+                <div>
+                    {% for tag in post.tags %}
+                        <style scoped>
+                            .button-xsmall {
+                                font-size: 70%;
+                            }
+
+                            .button-success {
+                                background: rgb(28, 184, 65);
+                                color: white;
+                                border-radius: 4px;
+                                text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+                            }
+                        </style>
+                        <button class="button-success button-xsmall pure-button">{{ tag.content }}</button>
+                    {% endfor %}
+
+                    <br>
+                    <br>
+                    <hr>
+                    {{ post.time.strftime('%Y-%m-%d %H:%M') }}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="conteudo">
+                {{ helper.render_page_data(posts,'public.page_archive') }}
+        </div>
+    </div>
+
+{% endblock %}

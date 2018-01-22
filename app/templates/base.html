@@ -1,0 +1,75 @@
+<html>
+<head>
+    <title>__Larryli</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+</head>
+
+<body>
+<header class="header">
+    <ul>
+        <li class="cor-1"></li>
+        <li class="cor-2"></li>
+        <li class="cor-3"></li>
+        <li class="cor-4"></li>
+        <li class="cor-5"></li>
+    </ul>
+</header>
+<div class="wrap">
+    <nav class="menu">
+        <ul>
+            <li>
+                <a href="/home">Home</a>
+            </li>
+            <li>
+                <a href="/archive">archive</a>
+            </li>
+            <li>
+                <a href="/tags">Tags</a>
+            </li>
+            <li>
+                <a href="/project">Project</a>
+            </li>
+            <li>
+                <a href="/gallery">Gallery</a>
+            </li>
+        </ul>
+    </nav>
+    <aside class="sidebar">
+        <div class="widget">
+            <h2>Larry Li</h2>
+            <p>Hello, I'm
+                <b> Li Xinlong,</b>
+                <br>studying in <b>UESTC</b>
+            </p>
+        </div>
+        <div class="widget">
+            <h2>Contact Me</h2>
+            <p>E-Mail:
+                <br>
+                <b>lixinlong1995@gmail.com</b>
+            </p>
+            <p>Github:
+                <br>
+                <b><a href="https://github.com/LarryAndCode">LarryAndCode</a></b>
+            </p>
+        </div>
+        <div class="widget">
+            <form class="pure-form">
+                <input type="text" class="pure-input-rounded">
+                <br>
+                <br>
+                <div align="center">
+                     <button type="submit" class="pure-button" >Search</button>
+                </div>
+            </form>
+        </div>
+
+    </aside>
+    {% block content %}{% endblock %}
+</div>
+</body>
+
+</html>

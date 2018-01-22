@@ -1,0 +1,19 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+{% block content %}
+    <div class="blog">
+        {% if post %}
+            <div class="conteudo">
+                <div class="post-info">
+                    {{ post.time.strftime('%Y-%m-%d %H:%M') }}
+                </div>
+                <img src="../static/picture/1.jpg">
+                <h1> {{ post.title }} </h1>
+                <hr>
+                <p>
+                    {{ post.content|markdown }}
+                </p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

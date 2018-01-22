@@ -1,0 +1,32 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+{% block content %}
+    <div class="blog">
+        <div class="conteudo">
+            <table class="pure-table pure-table-bordered">
+                <thead>
+                <tr>
+                    <th>Repositor</th>
+                    <th>Star</th>
+                    <th>Fork</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for data in datas %}
+                    <tr>
+                        <td width="100%"><a class="Alabel"
+                                            href="https://github.com/LarryAndCode/{{ data.name }}">{{ data.name }}</a>
+                        </td>
+                        <td>
+                            <b>{{ data.stargazers_count }}</b>
+                        </td>
+                        <td>
+                            <b>{{ data. forks_count }}</b>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

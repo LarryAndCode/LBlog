@@ -1,0 +1,38 @@
+{% extends "blog/base.html" %}
+
+{% block content_title %}Draft List{% endblock %}
+
+{% block content %}
+
+    <div class="table-responsive">
+        <table class="table table-hover table-condensed table-bordered table-striped">
+            <thead>
+            <tr>
+                <td class="info">title</td>
+                <td class="success">tag</td>
+                <td class="info">time</td>
+                <td class="success">manipulate</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for post in unpublishedtposts %}
+                <tr>
+                    <td>{{ post.title }}</td>
+                    <td>
+                        {% for tag in post.tags %}
+                            {{ tag.content }}
+                        {% endfor %}
+                    </td>
+                    <td>{{ post.time.strftime('%Y-%m-%d %H:%M') }}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-xs">Edit</button>
+                        <button type="button" class="btn btn-success btn-xs">Published</button>
+                        <button type="button" class="btn btn-danger btn-xs">Delete</button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
